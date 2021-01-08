@@ -1,19 +1,4 @@
-// Variables globales
-String command;       // Chaine de caractères utilisée dans la communication Unreal vers Arduino
-
-int whiteButtonState = 0;
-int yellowButtonState = 0;
-int greenButtonState = 0;
-int blueButtonState = 0;
-int redButtonState = 0; 
-
-/*
-const short whiteLedPin = 2;
-const short yellowLedPin = 3;
-const short greenLedPin = 4;
-const short blueLedPin = 5;
-const short redLedPin = 6;
-*/
+//String command;       // String to read serial
 
 const short whiteButtonPin = 2;
 const short yellowButtonPin = 4;
@@ -21,18 +6,13 @@ const short greenButtonPin = 6;
 const short blueButtonPin = 8;
 const short redButtonPin = 10;
 
-void setup() {
-    // Activation du Serial
-    Serial.begin(9600);
-    // Parametrage des pins
-    // LEDs 
-/*    pinMode(whiteLedPin, OUTPUT); 
-    pinMode(yellowLedPin, OUTPUT);
-    pinMode(greenLedPin, OUTPUT);
-    pinMode(blueLedPin, OUTPUT);
-    pinMode(redLedPin, OUTPUT); */
+bool writed = false;
+bool isUsed = false;
 
-    // Buttons
+void setup() {
+    // Activate Serial
+    Serial.begin(9600);
+    // Pin Setup
     pinMode(whiteButtonPin, INPUT_PULLUP);
     pinMode(yellowButtonPin, INPUT_PULLUP);
     pinMode(greenButtonPin, INPUT_PULLUP);
@@ -41,112 +21,37 @@ void setup() {
 }
  
 void loop() {
-  // Partie gestion de la LED
-  if(Serial.available()){
-    /* On insére dans la chaine de caractère "command" le contenu du Serial en lisant sa dernière ligne d'instruction
-      command = Serial.readStringUntil('\n');
-      // On teste la chaine de caractère pour voir si elle correspond à un cas géré
-      if(command.equals("SwitchOnLED")){
-        // On lance la fonction Arduino correspondant à la commande reçue
-          SwitchOnLED();
-      }
-      else if(command.equals("SwitchOffLED")){
-        // On lance la fonction Arduino correspondant à la commande reçue
-          SwitchOffLED();
-      }
-      else{
-        // Si le Serial contient une ligne d'instruction ne correspondant à aucune commande prévue, on affiche un message d'erreur
-          Serial.println("Invalid command");
-      }*/
-  }
+  // Read from UE4
+  /*if(Serial.available()){
+    //TODO
+  }*/
 
-  // On teste cette valeur pour savoir si le bouton est pressé ou non
-  whiteButtonState = digitalRead(whiteButtonPin);
-  if(whiteButtonState == HIGH)
-  {
+  if(digitalRead(whiteButtonPin) == HIGH){
+    isUsed == true;
     SendInfo("WhitePressed");
-  }
-  else if (digitalRead(yellowButtonPin) == HIGH) {
+  }else if (digitalRead(yellowButtonPin) == HIGH) {
+    isUsed == true;
     SendInfo("YellowPressed");
-  }
-  else if (digitalRead(greenButtonPin) == HIGH) {
+  }else if (digitalRead(greenButtonPin) == HIGH) {
+    isUsed == true;
     SendInfo("GreenPressed");
-  }
-  else if (digitalRead(blueButtonPin) == HIGH) {
+  }else if (digitalRead(blueButtonPin) == HIGH) {
+    isUsed == true;
     SendInfo("BluePressed");
-  }
-  else if (digitalRead(redButtonPin) == HIGH) {
+  }else if (digitalRead(redButtonPin) == HIGH) {
+    isUsed == true;
     SendInfo("RedPressed");
-  }
-  else{
-    SendInfo("NothingPressed");
+  }else{
+    isUsed = false;
+    writed = false;
   }
 }
 
 void SendInfo(String msg)
 {
-  // On insére dans le Serial la chaine de caractère reçue, elle sera lue dans Unreal
-  Serial.println(msg);
+  // Write in Serial
+  if (isUsed != writed){
+    Serial.println(msg);
+    writed = true;
+  }
 }
-/*
-void SwitchOnLED(int color)
-{
-  // Switch specified led on
-  switch (color) {
-    case 0: digitalWrite(whiteLedPin, HIGH);
-      break;
-     case 1: digitalWrite(yellowLedPin, HIGH);
-      break;
-     case 2: digitalWrite(greenLedPin, HIGH);
-      break;
-     case 3: digitalWrite(blueLedPin, HIGH);
-      break;
-     case 4: digitalWrite(redLedPin, HIGH);
-      break;
-    default: return;
-  }
-
-  // Pour debug éventuel, on affiche dans le Serial une ligne décrivant l'action de la fonction
-  Serial.println("Switch On LED");
-}
-
-void SwitchOffLED(int color)
-{
-  switch (color) {
-    case 0: digitalWrite(whiteLedPin, LOW);
-      break;
-     case 1: digitalWrite(yellowLedPin, LOW);
-      break;
-     case 2: digitalWrite(greenLedPin, LOW);
-      break;
-     case 3: digitalWrite(blueLedPin, LOW);
-      break;
-     case 4: digitalWrite(redLedPin, LOW);
-      break;
-    default: return;
-  }
-
-  // Pour debug éventuel, on affiche dans le Serial une ligne décrivant l'action de la fonction
-  Serial.println("Switch Off LED");
-  // Switch specified led off
-}
-
-int GetColor(String color) {
-  if (color == "white"){
-    return 0;
-  } 
-  if (color == "yellow") {
-    return 1;
-  }
-  if (color == "green") {
-    return 2;
-  }
-  if (color == "blue") {
-    return 3;
-  }
-  if (color == "red") {
-    return 4;
-  }
-  return -1;
-}
-*/
