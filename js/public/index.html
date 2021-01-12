@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino CTRL ALT</title>
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script> 
+    <!-- Load Posenet -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script> 
+    <script src='https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js'></script>
+</head>
+<body>
+    <h1>Hello there !</h1>
+    <h3>Press space to start and choose a position, then don't move, your partner will try to defuse the bomb on the other screen</h3>
+    <canvas id='canvas'></canvas>
+    <canvas style='position: absolute; z-index: 999' id='preview'></canvas>
+    <script src="./index.js"></script>
+</body>
+</html>
