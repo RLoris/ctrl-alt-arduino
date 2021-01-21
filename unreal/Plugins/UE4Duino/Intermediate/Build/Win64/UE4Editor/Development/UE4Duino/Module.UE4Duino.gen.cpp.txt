@@ -1,0 +1,7 @@
+C:\Users\Willi\Documents\GitHub\ctrl-alt-arduino\unreal\Ctrl_Alt_Arduino\Plugins\UE4Duino\Intermediate\Build\Win64\UE4Editor\Development\UE4Duino\Definitions.UE4Duino.h
+C:/Users/Willi/Documents/GitHub/ctrl-alt-arduino/unreal/Ctrl_Alt_Arduino/Plugins/UE4Duino/Intermediate/Build/Win64/UE4Editor/Inc/UE4Duino/Serial.gen.cpp
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+C:\Users\Willi\Documents\GitHub\ctrl-alt-arduino\unreal\Ctrl_Alt_Arduino\Plugins\UE4Duino\Source\UE4Duino/Public/Serial.h
+C:\Users\Willi\Documents\GitHub\ctrl-alt-arduino\unreal\Ctrl_Alt_Arduino\Plugins\UE4Duino\Intermediate\Build\Win64\UE4Editor\Inc\UE4Duino\Serial.generated.h
+C:/Users/Willi/Documents/GitHub/ctrl-alt-arduino/unreal/Ctrl_Alt_Arduino/Plugins/UE4Duino/Intermediate/Build/Win64/UE4Editor/Inc/UE4Duino/UE4Duino.init.gen.cpp

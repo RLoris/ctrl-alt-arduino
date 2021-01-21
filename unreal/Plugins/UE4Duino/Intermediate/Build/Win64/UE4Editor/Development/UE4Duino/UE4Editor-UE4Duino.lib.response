@@ -1,0 +1,14 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-UE4Duino.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\Willi\Documents\GitHub\ctrl-alt-arduino\unreal\Ctrl_Alt_Arduino\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"C:\Users\Willi\Documents\GitHub\ctrl-alt-arduino\unreal\Ctrl_Alt_Arduino\Plugins\UE4Duino\Intermediate\Build\Win64\UE4Editor\Development\UE4Duino\Module.UE4Duino.cpp.obj"
+"C:\Users\Willi\Documents\GitHub\ctrl-alt-arduino\unreal\Ctrl_Alt_Arduino\Plugins\UE4Duino\Intermediate\Build\Win64\UE4Editor\Development\UE4Duino\Module.UE4Duino.gen.cpp.obj"
+"C:\Users\Willi\Documents\GitHub\ctrl-alt-arduino\unreal\Ctrl_Alt_Arduino\Plugins\UE4Duino\Intermediate\Build\Win64\UE4Editor\Development\UE4Duino\Default.rc2.res"
+/OUT:"C:\Users\Willi\Documents\GitHub\ctrl-alt-arduino\unreal\Ctrl_Alt_Arduino\Plugins\UE4Duino\Intermediate\Build\Win64\UE4Editor\Development\UE4Duino\UE4Editor-UE4Duino.lib"
+/INCLUDE:IMPLEMENT_MODULE_UE4Duino
