@@ -13,20 +13,23 @@ app.get('/', (req, res) => {
     });
 })
 
-// const detectionEvent = 'detectionEvent';
-// const detectionLostEvent = 'detectionLostEvent';
 const initEvent = 'initEvent';
 const moveEvent = 'moveEvent';
+const winEvent = 'winEvent';
 
-//When a client connects, bind each desired event to the client socket
+//When a client connects
+
 io.on('connection', socket =>{
+
 	//track connected clients via log
+
 	clients.push(socket.id);
 	const clientConnectedMsg = 'User connected ' + util.inspect(socket.id) + ', total: ' + clients.length;
 	io.emit(chatEvent, clientConnectedMsg);
 	console.log(clientConnectedMsg);
 
 	//track disconnected clients via log
+
 	socket.on('disconnect', () =>{
 		clients.pop(socket.id);
 		const clientDisconnectedMsg = 'User disconnected ' + util.inspect(socket.id) + ', total: ' + clients.length;
@@ -44,21 +47,11 @@ io.on('connection', socket =>{
 		io.emit(moveEvent, movePose);
 	})
 
-	/*
-	socket.on('detectionLost', (bodyParts) => {
-		// when user is lost
-		console.log('DETECTION LOST');
-		io.emit(detectionLostEvent, bodyParts);
-	});
-	*/
+	socket.on('OnWin', () => {
+		console.log('Win !');
+		io.emit(winEvent, {});
+	})
 
-	/*
-	socket.on('detection', (bodyParts) => {
-		// when a user is detected
-		console.log('DETECTION');
-		io.emit(detectionEvent, bodyParts);
-	});
-	*/
 });
 
 

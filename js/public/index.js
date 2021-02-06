@@ -3,7 +3,7 @@ const preview = document.querySelector('#preview');
 const ctx = canvas.getContext('2d');
 const ctx2 = preview.getContext('2d');
 const video = document.createElement('video');
-let net = null, width = 0, height = 0, modelLoaded = false, timeoutId = null, ws, isDetected = false, isInitialSetup = false, initialPose = {}, isPlaying = false, defeatRadius = 30;
+let net = null, width = 0, height = 0, modelLoaded = false, timeoutId = null, ws, isDetected = false, isInitialSetup = false, initialPose = {}, isPlaying = false, defeatRadius = 30, isLaunched = false;
 
 const bodyParts = {
     nose: "nose",
@@ -29,9 +29,11 @@ const requiredBodyParts = [bodyParts.leftShoulder, bodyParts.rightShoulder, body
 
 window.onload = () => {
   ws = io('http://localhost:3000');
+  ws.on('winEvent', () => {
+    alert('Win !');
+    isLaunched = false;
+  });
 }
-
-let isLaunched = false;
 
 window.addEventListener('keydown', (ev) => {
   if(ev.code === 'Space' && !isLaunched) {
@@ -157,5 +159,7 @@ async function drawToCanvas() {
     }*/
     // console.log(pose.keypoints);
   }
-  requestAnimationFrame(drawToCanvas);
+  if (isLaunched) {
+    requestAnimationFrame(drawToCanvas);
+  }
 }
